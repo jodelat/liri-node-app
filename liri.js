@@ -51,17 +51,24 @@ var spotify = new Spotify({
   secret: "2721d71974cd4a7ab7062ad8b1edde71"
 });
 
-if(process.argv[2] == "spotify-this-song"){
+if(process.argv[2] == "spotify-this-song" && process.argv[3]){
 spotify.search({ type: 'track', query: process.argv[3] }, function(err, data) {
   if (err) {
     return console.log('Error occurred: ' + err);
   }
-
   console.log("Artist:" + data.tracks.items[0].artists[0].name + "\nSong Name:" + data.tracks.items[0].name + "\nPreview Link:" + data.tracks.items[0].external_urls.spotify + "\nAlbum Name:" + data.tracks.items[0].album.name);
 
 });
 }
+if(process.argv[2] == "spotify-this-song" && !process.argv[3]){
+  spotify.search({ type: 'track', query: "The Sign Ace of Base" }, function(err, data) {
+    if (err) {
+      return console.log('Error occurred: ' + err);
+    }
+    console.log("Artist:" + data.tracks.items[0].artists[0].name + "\nSong Name:" + data.tracks.items[0].name + "\nPreview Link:" + data.tracks.items[0].external_urls.spotify + "\nAlbum Name:" + data.tracks.items[0].album.name);
 
+  });
+}
 //do-what-it-says Code
 var fs = require("fs");
 

@@ -32,9 +32,19 @@ var request = require("request");
 var movieName = process.argv[3];
 
 var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
-
-if(process.argv[2] == "movie-this"){
+var secondURL = "http://www.omdbapi.com/?t=" + "Mr. Nobody" + "&y=&plot=short&apikey=40e9cece";
+if(process.argv[2] == "movie-this" && process.argv[3]){
 request(queryUrl, function(error, response, body) {
+
+  if (!error && response.statusCode === 200) {
+
+    console.log("Title:"+ JSON.parse(body).Title +"\nRelease Year:"+ JSON.parse(body).Year + "\nIMDB Rating:" + JSON.parse(body).imdbRating + "\n" + JSON.parse(body).Ratings[1].Source + ":" + JSON.parse(body).Ratings[1].Value + "\nPlot:" + JSON.parse(body).Plot + "\nActors:" + JSON.parse(body).Actors);
+
+  }
+});
+}
+if(process.argv[2] == "movie-this" && !process.argv[3]){
+request(secondURL, function(error, response, body) {
 
   if (!error && response.statusCode === 200) {
 

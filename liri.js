@@ -1,3 +1,9 @@
+//Tell User Parameters
+if(!process.argv[2]){
+console.log("Use my-tweets to check out your latest tweets");
+console.log("Use movie-this to find information on a movie");
+console.log("Use spotify-this-song to find information on a song");
+}
 //Twitter API Code
 var keys = require("./keys.js");
 

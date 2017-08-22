@@ -1,5 +1,5 @@
 //Twitter API Code
-var keys = require("./keys.js")
+var keys = require("./keys.js");
 
 var Twitter = require("twitter");
 
